@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <input type="text" id="txt">
+    <input type="button" id="btn" onclick="fun()" value="add to list">
+    <ul id="list"></ul>
+    <script>
+                ar=JSON.parse(window.localStorage.getItem("work"));
+            if(JSON.parse(window.localStorage.getItem("work")))
+             {
+                ar=JSON.parse(window.localStorage.getItem("work"))
+                genUI();
+             }
+        function fun(){
+            var todo=document.getElementById("txt").value;
+             ar.push(todo);
+            window.localStorage.setItem("work",JSON.stringify(ar))
+             genUI();
+        }
+        function genUI(){
+            document.getElementById("list").innerText=''
+            ar.forEach(function(a,i){
+            var nli=document.createElement("li")
+            var par=document.createElement("p")
+            par.innerText=a;
+            let btn=document.createElement("button")
+            btn.innerText="delete"
+            btn.addEventListener("click",function(){
+                ar.splice(i,1);
+                genUI();
+            })
+            nli.appendChild(btn);
+            nli.appendChild(par);
+            document.getElementById("list").appendChild(nli)
+        })
+        }
+    </script>
+</body>
+</html>
