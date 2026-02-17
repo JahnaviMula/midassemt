@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <style></style>
+</head>
+<body>
+    <h1>Counter:<span id=d1></span></h1>
+    <button onclick="fun1()">Increment</button>
+    <button onclick="fun2()">Decrement</button>
+    <script>
+           document.getElementById("d1").innerText=window.localStorage.getItem("c")
+        function fun1()
+        {
+           var val=Number(window.localStorage.getItem("c"))
+           val=val+1
+           document.getElementById("d1").innerText=val  
+           window.localStorage.setItem("c",val)
+        }
+        function fun2()
+        {
+           var val=Number(window.localStorage.getItem("c"))
+           val=val-1
+           document.getElementById("d1").innerText=val  
+           window.localStorage.setItem("c",val)
+        }
+    </script>
+</body>
+</html>
